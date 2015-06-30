@@ -17,25 +17,10 @@ class RomanNumeralsConvertor {
 
     def Convert(arabicNumber: Int): String = {
 
-		return converters.foldLeft("")((acc, 
+		converters.foldLeft("")(
+			(acc, 
 		  converter: (Int => String)) => acc + 
 		  converter(arabicNumber))
-
-		var result = ""
-		if (arabicNumber >= 1000){
-			result += Digits(arabicNumber / 1000, "M", "", "")
-		}
-		if (arabicNumber%1000 >= 100){
-			result += Digits(arabicNumber%1000 / 100, "C", "D", "M")
-		}
-		if (arabicNumber % 100 >= 10) {
-			result += Digits(arabicNumber % 100 / 10, "X", "L", "C")
-		}  
-
-
-		result += Digits(arabicNumber % 10, "I", "V", "X")
-		
-		result
     }
 
     def Digits(digit: Int, small: String, medium: String, large: String): String = {
@@ -59,6 +44,9 @@ class RomanNumeralsConvertor {
 			println("Test failed. Input " + input + 
 				" Output: " + output + 
 				" Expected: " + expected)
+		} else
+		{
+			println("Test passed. Input " + input + " Output: " + output)
 		}
     }
 }
